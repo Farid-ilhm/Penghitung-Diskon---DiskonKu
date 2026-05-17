@@ -1,0 +1,34 @@
+<ion-content [fullscreen]="true" class="custom-page ion-padding">
+  <div class="page-container">
+    <div class="header-title">
+      <h1>Riwayat Perhitungan</h1>
+      <ion-icon name="trash-outline" class="btn-delete-all" (click)="hapusSemua()" *ngIf="riwayatList.length > 0"></ion-icon>
+    </div>
+
+    <ion-list lines="none" class="bg-transparent" *ngIf="riwayatList.length > 0">
+      <ion-item-sliding *ngFor="let r of riwayatList" class="custom-sliding">
+        <ion-item class="custom-card">
+          <div class="card-content">
+            <p class="tanggal">{{ r.tanggal }}</p>
+            <div class="divider-dotted"></div>
+            <p class="detail">Harga: {{ r.mataUang }} {{ formatCurrency(r.hargaAwal) }}</p>
+            <p class="detail">Diskon: {{ r.diskonPersen }}% ({{ r.mataUang }} {{ formatCurrency(r.potongan) }})</p>
+            <h3 class="total">Total: {{ r.mataUang }} {{ formatCurrency(r.hargaAkhir) }}</h3>
+          </div>
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="hapusRiwayat(r.id)">
+            <ion-icon name="trash" slot="icon-only"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+    <div class="empty-state" *ngIf="riwayatList.length === 0">
+      <ion-icon name="time-outline" class="empty-icon"></ion-icon>
+      <h3>Belum ada riwayat</h3>
+      <p>Riwayat perhitungan dari kalkulator akan muncul di sini.</p>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,84 @@
+<ion-content [fullscreen]="true" class="ion-padding custom-page">
+  <div class="page-container">
+    <div class="header-title">
+      <img src="assets/logo-diskonku.png" alt="Logo DiskonKu" class="app-logo">
+      <h1>Kalkulator Diskon</h1>
+    </div>
+
+    <div class="input-section">
+      <ion-item class="custom-input">
+        <ion-label position="stacked">Harga Awal</ion-label>
+        <div class="input-row">
+          <ion-input type="text" inputmode="numeric" [value]="hargaAwalStr" (ionInput)="onHargaChange($event)" placeholder="0"></ion-input>
+          <span class="suffix">{{ mataUang }}</span>
+        </div>
+      </ion-item>
+
+      <ion-item class="custom-input">
+        <ion-label position="stacked">Diskon (%)</ion-label>
+        <div class="input-row">
+          <ion-input type="text" inputmode="decimal" [value]="diskonPersenStr" (ionInput)="onDiskonChange($event)" placeholder="0"></ion-input>
+          <span class="suffix">%</span>
+        </div>
+      </ion-item>
+    </div>
+
+    <div class="quick-discounts">
+      <ion-button class="btn-quick" (click)="setDiskon(10)">10%</ion-button>
+      <ion-button class="btn-quick" (click)="setDiskon(20)">20%</ion-button>
+      <ion-button class="btn-quick custom-purple" (click)="setDiskon(50)">50%</ion-button>
+    </div>
+
+    <div class="currency-section">
+      <p class="currency-label">Pilih Mata Uang</p>
+      <ion-radio-group [(ngModel)]="mataUang">
+        <ion-row>
+          <ion-col size="6">
+            <ion-item lines="none" class="radio-item">
+              <ion-radio value="Rp" slot="start"></ion-radio>
+              <ion-label>Rupiah (Rp)</ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item lines="none" class="radio-item">
+              <ion-radio value="$" slot="start"></ion-radio>
+              <ion-label>Dollar ($)</ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item lines="none" class="radio-item">
+              <ion-radio value="¥" slot="start"></ion-radio>
+              <ion-label>Yen (¥)</ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item lines="none" class="radio-item">
+              <ion-radio value="RM" slot="start"></ion-radio>
+              <ion-label>Ringgit (RM)</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-radio-group>
+    </div>
+
+    <ion-row class="action-buttons">
+      <ion-col size="6">
+        <ion-button expand="block" color="primary" class="btn-action" (click)="hitung()">
+          HITUNG
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" color="danger" class="btn-action" (click)="reset()">
+          RESET <ion-icon name="refresh-outline" slot="end"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <div class="divider"></div>
+
+    <div class="results">
+      <p><strong>Potongan:</strong> {{ mataUang }} {{ formatCurrency(potongan) }}</p>
+      <p><strong>Harga Akhir:</strong> {{ mataUang }} {{ formatCurrency(hargaAkhir) }}</p>
+    </div>
+  </div>
+</ion-content>

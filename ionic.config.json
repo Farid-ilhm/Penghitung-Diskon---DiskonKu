@@ -1,0 +1,7 @@
+{
+  "name": "DiskonKu",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

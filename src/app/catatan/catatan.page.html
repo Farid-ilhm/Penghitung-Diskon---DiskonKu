@@ -1,0 +1,37 @@
+<ion-content [fullscreen]="true" class="custom-page ion-padding">
+  <div class="page-container">
+    <div class="header-title">
+      <h1>Catatan Anda</h1>
+      <ion-icon name="trash-outline" class="btn-delete-all" (click)="hapusSemua()" *ngIf="catatanList.length > 0"></ion-icon>
+    </div>
+
+    <ion-list lines="none" class="bg-transparent" *ngIf="catatanList.length > 0">
+      <ion-item-sliding *ngFor="let c of catatanList" class="custom-sliding">
+        <ion-item class="custom-card">
+          <div class="card-content">
+            <p class="isi-catatan">{{ c.isi }}</p>
+            <p class="tanggal">{{ c.tanggal }}</p>
+          </div>
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="hapusCatatan(c.id)">
+            <ion-icon name="trash" slot="icon-only"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+    <div class="empty-state" *ngIf="catatanList.length === 0">
+      <ion-icon name="document-text-outline" class="empty-icon"></ion-icon>
+      <h3>Belum ada catatan</h3>
+      <p>Ketuk tombol tambahkan '+' di bawah untuk mulai menulis.</p>
+    </div>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="fab-custom">
+    <ion-fab-button (click)="tambahCatatan()" color="primary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

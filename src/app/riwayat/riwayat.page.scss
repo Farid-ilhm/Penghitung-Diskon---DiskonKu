@@ -1,0 +1,118 @@
+.custom-page {
+  --background: #ffffff;
+}
+
+.page-container {
+  margin-top: env(safe-area-inset-top, 0px);
+  padding: 0 15px;
+}
+
+.header-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 45px;
+  margin-bottom: 30px;
+  padding: 0;
+
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    margin: 0;
+  }
+
+  .btn-delete-all {
+    font-size: 24px;
+    color: #c32d29;
+    cursor: pointer;
+  }
+}
+
+.bg-transparent {
+  background: transparent;
+}
+
+.custom-sliding {
+  margin-bottom: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  background: white;
+  overflow: hidden;
+}
+
+.custom-card {
+  --background: white;
+  --padding-start: 15px;
+  --inner-padding-end: 15px;
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+  border-radius: 12px;
+
+  .card-content {
+    width: 100%;
+    
+    .tanggal {
+      font-size: 13px;
+      color: #888;
+      margin: 0 0 8px 0;
+    }
+
+    .divider-dotted {
+      border-top: 1px dotted #ccc;
+      margin-bottom: 12px;
+    }
+    
+    .detail {
+      font-size: 15px;
+      color: #444;
+      margin: 0 0 4px 0;
+    }
+
+    .total {
+      font-size: 18px;
+      font-weight: bold;
+      color: #1e5dd9;
+      margin: 10px 0 0 0;
+    }
+  }
+}
+
+ion-item-options {
+  border-radius: 0 12px 12px 0;
+  overflow: hidden;
+}
+
+ion-item-option[color="danger"] {
+  --background: #c32d29;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  text-align: center;
+  padding: 0 20px;
+
+  .empty-icon {
+    font-size: 80px;
+    color: #b9c2d1;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #222;
+    margin: 0 0 15px 0;
+  }
+
+  p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
